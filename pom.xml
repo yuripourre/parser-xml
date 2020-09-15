@@ -10,7 +10,7 @@
   <scm>
     <connection>scm:git:git://github.com/harium/xml-parser.git</connection>
     <developerConnection>scm:git:ssh://github.com:harium/xml-parser.git</developerConnection>
-    <url>http://github.com/harium/suneidesis/tree/master</url>
+    <url>http://github.com/harium/xml-parser/tree/master</url>
   </scm>
   <developers>
     <developer>

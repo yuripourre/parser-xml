@@ -41,11 +41,6 @@ public class DependencyParser extends NodeParserImpl<Pom> {
 			textParser.setOnCloseListener(() -> dependency.setVersion(textParser.getValue()));
 			parser.add(textParser);
 			textParser.startElement(uri, localName, qName, attributes, parser, output);
-		} else if (VERSION.equals(qName)) {
-			final TextParser textParser = new TextParser("version");
-			textParser.setOnCloseListener(() -> dependency.setVersion(textParser.getValue()));
-			parser.add(textParser);
-			textParser.startElement(uri, localName, qName, attributes, parser, output);
 		}
 	}
 
