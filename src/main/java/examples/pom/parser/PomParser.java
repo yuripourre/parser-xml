@@ -12,6 +12,7 @@ public class PomParser {
 	public Pom parse(File file) throws IOException, SAXException, ParserConfigurationException {
 		Pom pom = new Pom();
 		XMLParser handler = new XMLParser(pom);
+		handler.register(new ExclusionsParser());
 		handler.register(new DependencyParser());
 		handler.register(new PropertiesParser());
 		handler.register(new ProjectParser());

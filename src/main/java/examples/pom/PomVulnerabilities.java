@@ -18,8 +18,7 @@ public class PomVulnerabilities {
 							.getArtifactId());
 
 			String version = dependency.getVersion();
-
-			if (version.startsWith("${")) {
+			if (version!=null && version.startsWith("${")) {
 				String key = dependency.getVersion().substring(2, dependency.getVersion().length() - 1);
 				version = pom.getProperty(key);
 			}
