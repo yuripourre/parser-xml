@@ -35,7 +35,7 @@ public class ReadPropertiesAndDependencies {
 	}
 
 	private static void printProperties(Pom pom) {
-		for (Property property : pom.getProperties()) {
+		for (Property property : pom.getProperties().values()) {
 			System.out.println(property.getKey() + " = " + property.getValue());
 		}
 	}

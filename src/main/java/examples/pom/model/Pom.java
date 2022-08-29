@@ -13,6 +13,7 @@ public class Pom {
 	private String artifactId = "";
 	private String version = "";
 
+	private Dependency parent;
 	private List<Dependency> dependencies = new ArrayList<>();
 	private Map<String, Property> properties = new HashMap<>();
 
@@ -28,8 +29,8 @@ public class Pom {
 		this.dependencies = dependencies;
 	}
 
-	public Collection<Property> getProperties() {
-		return properties.values();
+	public Map<String, Property> getProperties() {
+		return properties;
 	}
 
 	public void setProperties(List<Property> properties) {
@@ -81,5 +82,13 @@ public class Pom {
 
 	public void setVersion(String version) {
 		this.version = version;
+	}
+
+	public Dependency getParent() {
+		return parent;
+	}
+
+	public void setParent(Dependency parent) {
+		this.parent = parent;
 	}
 }
