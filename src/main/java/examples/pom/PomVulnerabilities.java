@@ -3,6 +3,7 @@ package examples.pom;
 import examples.pom.model.Dependency;
 import examples.pom.model.Pom;
 import examples.pom.parser.PomParser;
+import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -26,15 +27,26 @@ public class PomVulnerabilities {
 
             Map<String, Report> reports = parseReports(url);
             Report report = reports.get(version);
+            if (report == null) {
+                continue;
+            }
+
             System.out.println(dependency.getGroupId() + ":" + dependency.getArtifactId() + " - " + report);
         }
     }
 
     private static Map<String, Report> parseReports(String url) throws IOException {
-        Document doc = Jsoup.connect(url).get();
+        Document doc;
+        Map<String, Report> reports = new HashMap<>();
+
+        try {
+            doc = Jsoup.connect(url).get();
+        } catch (HttpStatusException e) {
+            return reports;
+        }
+
         Elements elements = doc.body().select(".package-versions-table__container table tbody tr");
 
-        Map<String, Report> reports = new HashMap<>();
         for (Element element : elements) {
             Report report = new Report();
 
